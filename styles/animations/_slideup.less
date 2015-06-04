@@ -1,12 +1,12 @@
-$plugin-height: 66px;
+@plugin-height: 66px;
 
 /* Fade in up
 ------------------------------------ */
 @-webkit-keyframes slideUp {
     0% {
 
-        -webkit-transform: translateY($plugin-height);
-        transform: translateY($plugin-height);
+        -webkit-transform: translateY(@plugin-height);
+        transform: translateY(@plugin-height);
     }
 
     100% {
@@ -19,9 +19,9 @@ $plugin-height: 66px;
 @keyframes slideUp {
     0% {
 
-        -webkit-transform: translateY($plugin-height);
-        -ms-transform: translateY($plugin-height);
-        transform: translateY($plugin-height);
+        -webkit-transform: translateY(@plugin-height);
+        -ms-transform: translateY(@plugin-height);
+        transform: translateY(@plugin-height);
     }
 
     100% {

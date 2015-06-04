@@ -1,8 +1,11 @@
 @import '../_variables';
-@import 'base';
+@import '_base';
 
 .cc_container {
-
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
     overflow:hidden;
     padding:10px;
 
@@ -26,7 +29,7 @@
 
 
 
-@media screen and (min-width: $screen-xs-min) {
+@media screen and (min-width: @screen-xs-min) {
 
     .cc_container {
 
@@ -43,7 +46,7 @@
 
 }
 
-@media screen and (min-width: $screen-sm-min) {
+@media screen and (min-width: @screen-sm-min) {
 
     .cc_container {
         padding:15px 30px 15px;
@@ -61,7 +64,7 @@
 
 }
 
-@media screen and (min-width: $screen-md-min) {
+@media screen and (min-width: @screen-md-min) {
 
     .cc_container {
 
