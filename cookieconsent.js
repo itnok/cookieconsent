@@ -1,6 +1,6 @@
 (function () {
   // Stop from running again, if accidently included more than once.
-  if (window.hasCookieConsent) return;
+  if (window.hasCookieConsent) { return; }
   window.hasCookieConsent = true;
 
   /*
@@ -59,14 +59,14 @@
     },
 
     merge: function (obj1, obj2) {
-      if (!obj1) return;
+      if (!obj1) { return; }
       Util.each(obj2, function (val, key) {
         if (Util.isObject(val) && Util.isObject(obj1[key])) {
           Util.merge(obj1[key], val);
         } else {
           obj1[key] = val;
         }
-      })
+      });
     },
 
     bind: function (func, context) {
@@ -86,7 +86,7 @@
       var head = object;
       query = query.split('.');
       while ( (queryPart = query[i++]) && head.hasOwnProperty(queryPart) && (head = head[queryPart]) )  {
-        if (i === query.length) return head;
+        if (i === query.length) { return head; }
       }
       return null;
     },
@@ -95,7 +95,7 @@
       var exdate = new Date();
       expirydays = expirydays || 365;
       exdate.setDate(exdate.getDate() + expirydays);
-      document.cookie = name + '=' + value + '; expires=' + exdate.toUTCString() + '; path=/'
+      document.cookie = name + '=' + value + '; expires=' + exdate.toUTCString() + '; path=/';
     },
 
     addEventListener: function (el, event, eventListener) {
@@ -140,16 +140,16 @@
       return htmlStr.replace(/\{\{(.*?)\}\}/g, function (_match, sub) {
         var tokens = sub.split('||');
         var value;
-        while (token = tokens.shift()) {
+        while (!!(token = tokens.shift())) {
           token = token.trim();
 
           // If string
-          if (token[0] === '"') return token.slice(1, token.length - 1);
+          if (token[0] === '"') { return token.slice(1, token.length - 1); }
 
           // If query matches
           value =  Util.queryObject(scope, token);
 
-          if (value) return value;
+          if (value) { return value; }
         }
 
         return '';
@@ -195,7 +195,7 @@
 
     return {
       build: function (htmlStr, scope) {
-        if (Util.isArray(htmlStr)) htmlStr = htmlStr.join('');
+        if (Util.isArray(htmlStr)) { htmlStr = htmlStr.join(''); }
 
         htmlStr = insertReplacements(htmlStr, scope);
         var dom = buildDom(htmlStr);
@@ -234,7 +234,7 @@
 
     init: function () {
       var options = window[OPTIONS_VARIABLE];
-      if (options) this.setOptions(options);
+      if (options) { this.setOptions(options); }
 
       this.setContainer();
 
@@ -265,7 +265,7 @@
       // Add class to container classes so we can specify css for IE8 only.
       this.containerClasses = '';
       if (navigator.appVersion.indexOf('MSIE 8') > -1) {
-        this.containerClasses += ' cc_ie8'
+        this.containerClasses += ' cc_ie8';
       }
     },
 
@@ -321,13 +321,13 @@
 
   var init;
   var initialized = false;
-  (init = function () {
+  init = function () {
     if (!initialized && document.readyState == 'complete') {
       cookieconsent.init();
       initalized = true;
       window[OPTIONS_UPDATER] = cookieconsent.setOptionsOnTheFly.bind(cookieconsent);
     }
-  })();
+  };
 
   Util.addEventListener(document, 'readystatechange', init);
 
