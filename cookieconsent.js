@@ -272,6 +272,15 @@
       Util.merge(this.options, options);
     },
 
+    setLanguageOnTheFly: function (language) {
+      this.setLanguage(language);
+      this.render();
+    },
+
+    setLanguage: function (language) {
+      this.options.language = language;
+    },
+
     setContainer: function () {
       if (this.options.container) {
         this.container = document.querySelector(this.options.container);
