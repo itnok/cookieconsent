@@ -17,7 +17,7 @@
   var DISMISSED_COOKIE = 'cookieconsent_dismissed';
 
   // The path to built in themes (s3 bucket)
-  var THEME_BUCKET_PATH = '//s3.amazonaws.com/cc.silktide.com/';
+  var THEME_BUCKET_PATH = '//cookieconsent.bepartners.it/';
 
   // No point going further if they've already dismissed.
   if (document.cookie.indexOf(DISMISSED_COOKIE) > -1) {
@@ -213,18 +213,35 @@
    */
   var cookieconsent = {
     options: {
-      message: 'This website uses cookies to ensure you get the best experience on our website. ',
-      dismiss: 'Got it!',
-      learnMore: 'More info',
-      link: null,
+      message: {
+        'en': "To offer you a better experience, this site uses cookies, including those of third parties. By selecting OK or continuing browsing you are consenting to the cookies usage.",
+        'es': "Esta pagina web usa cookies propias y de terceros para mejorar tu experencia de navegación. Si haces OK, o continuando la navegación, aceptas el uso de las cookies.",
+        'it': "Questo sito usa cookies proprietari e di terze parti per migliorare la tua esperienza di navigazione. Cliccando OK, o proseguendo la navigazione in altra maniera, acconsenti all'uso dei cookie."
+      },
+      dismiss: {
+        'en': 'OK',
+        'es': 'OK',
+        'it': 'OK'
+      },
+      learnMore: {
+        'en': 'More info',
+        'es': 'Más información',
+        'it': 'Maggiori informazioni'
+      },
+      link: {
+        'en': null,
+        'es': null,
+        'it': null
+      }
       container: null, // selector
       theme: 'light-floating',
+      language: 'en',
       markup: [
         '<div class="cc_banner-wrapper {{containerClasses}}">',
         '<div class="cc_banner cc_container cc_container--open">',
-        '<a href="#null" data-cc-event="click:dismiss" class="cc_btn cc_btn_accept_all">{{options.dismiss}}</a>',
+        '<a href="#null" data-cc-event="click:dismiss" class="cc_btn cc_btn_accept_all">{{options.dismiss[options.language]}}</a>',
 
-        '<p class="cc_message">{{options.message}} <a data-cc-if="options.link" class="cc_more_info" href="{{options.link || "#null"}}">{{options.learnMore}}</a></p>',
+        '<p class="cc_message">{{options.message[options.language]}} <a data-cc-if="options.link[options.language]" class="cc_more_info" href="{{options.link[options.language] || "#null"}}">{{options.learnMore[options.language]}}</a></p>',
 
         '<a class="cc_logo" target="_blank" href="http://silktide.com/cookieconsent">Cookie Consent plugin for the EU cookie law</a>',
         '</div>',
@@ -274,7 +291,7 @@
 
       // If theme is specified by name
       if (theme.indexOf('.css') === -1) {
-        theme = THEME_BUCKET_PATH + theme + '.css';
+        theme = THEME_BUCKET_PATH + 'themes/' + theme + '.css';
       }
 
       var link = document.createElement('link');
