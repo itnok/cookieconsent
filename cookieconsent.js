@@ -232,7 +232,7 @@
         'en': null,
         'es': null,
         'it': null
-      }
+      },
       container: null, // selector
       theme: 'light-floating',
       language: 'en',
