@@ -66,6 +66,17 @@ module.exports = function(grunt) {
             default: {
             },
 
+            build: {
+                files: [
+                    {
+                        expand:  true,
+                        flatten: false,
+                        dest:    'build',
+                        src:     [ 'img/**' ]
+                    }
+                ]
+            },
+
             deploy: {
                 files: [
                     {
@@ -316,6 +327,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:prebuild',
+        'copy:build',
         'jshint',
         'less:build',
         'concat',
