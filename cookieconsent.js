@@ -248,13 +248,14 @@
             },
             container: null, // selector
             theme: 'light-floating',
+            expose: false,
             language: 'en',
             markup: [
                 '<div class="cc_banner-wrapper {{containerClasses}}">',
                 '<div class="cc_banner cc_container cc_container--open">',
                 '<a href="#null" data-cc-event="click:dismiss" class="cc_btn cc_btn_accept_all">{{options.dismiss[options.language]}}</a>',
 
-                '<p class="cc_message">{{options.message[options.language]}} <a data-cc-if="options.link[options.language]" class="cc_more_info" href="{{options.link[options.language] || "#null"}}">{{options.learnMore[options.language]}}</a></p>',
+                '<p class="cc_message">{{options.message[options.language]}} <a data-cc-if="options.link.{{options.language}}" class="cc_more_info" href="{{options.link[options.language] || "#null"}}">{{options.learnMore[options.language]}}</a></p>',
 
                 '<a class="cc_logo" target="_blank" href="http://cookieconsent.bepartners.it/">Cookie Consent plugin for the EU cookie law</a>',
                 '</div>',
@@ -345,12 +346,26 @@
             } else {
                 this.container.insertBefore(this.element, this.container.firstChild);
             }
+
+
+
+            // remove current expose element (if we've already rendered)
+            if (this.expose && this.expose.parentNode) {
+                this.expose.parentNode.removeChild(this.expose);
+                delete this.expose;
+            }
+
+            if (this.options.expose) {
+                this.expose = DomBuilder.build( '<div class="cc_expose"></div>', this );
+                document.body.appendChild( this.expose );
+            }
         },
 
         dismiss: function (evt) {
             evt.preventDefault();
             this.setDismissedCookie();
             this.container.removeChild(this.element);
+            this.container.removeChild(this.expose);
         },
 
         setDismissedCookie: function () {

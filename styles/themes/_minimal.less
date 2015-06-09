@@ -1,0 +1,84 @@
+@import '../_variables';
+
+@clr-box-background: #ffffff;
+@clr-box-text:       #646464;
+@clr-btn-background: #c0c0c0;
+@clr-btn-text:       #666666;
+@clr-expose:         #000000;
+
+.cc_container {
+
+    background:  @clr-box-background;
+    background:  fade( @clr-box-background, 85% );
+    color:       @clr-box-text;
+    font-size:   14px;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+    box-sizing:  border-box;
+    border:       1px solid #ccc;
+    box-shadow:   0px 0px 15px fade( @clr-box-text, 35% );
+
+    ::-moz-selection {
+        background:  darken( @clr-box-background, 10% );
+        color:       @clr-box-background;
+        text-shadow: none;
+    }
+
+
+    .cc_btn,
+    .cc_btn:visited {
+        color:                  @clr-btn-text;
+        background-color:       @clr-btn-background;
+        transition:             background 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+        -webkit-transition:     background 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+        border-radius:          5px;
+        -webkit-border-radius:  5px;
+        max-width:             60px;
+    }
+
+    .cc_btn:hover,
+    .cc_btn:active {
+        background-color: darken(  @clr-btn-background, 5% );
+        color:            lighten( @clr-btn-text,       5% );
+    }
+
+
+    .cc_more_info {
+
+    }
+
+    a,
+    a:visited {
+        text-decoration: none;
+        color:           lighten( @clr-box-text, 15% );
+        transition:      200ms color;
+    }
+
+    a:hover,
+    a:active {
+        color: lighten( @clr-btn-text, 10% );
+    }
+}
+
+.cc_expose {
+    z-index:    9000;
+    position:   absolute;
+    top:        0px;
+    left:       0px;
+    right:      0px;
+    bottom:     0px;
+    background: @clr-expose;
+    background: fade( @clr-expose, 75% );
+    background: -moz-radial-gradient(center, ellipse cover, fade( @clr-expose, 75% ) 0%, fade( @clr-expose, 90% ) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,fade( @clr-expose, 75% )), color-stop(100%,fade( @clr-expose, 90% )));
+    background: -webkit-radial-gradient(center, ellipse cover, fade( @clr-expose, 75% ) 0%,fade( @clr-expose, 90% ) 100%);
+    background: -o-radial-gradient(center, ellipse cover, fade( @clr-expose, 75% ) 0%,fade( @clr-expose, 90% ) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, fade( @clr-expose, 75% ) 0%,fade( @clr-expose, 90% ) 100%);
+    background: radial-gradient(ellipse at center, fade( @clr-expose, 75% ) 0%,fade( @clr-expose, 90% ) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21000000', endColorstr='#3e000000',GradientType=1 );
+}
+
+@media screen and (min-width: @screen-md-min) {
+    .cc_container {
+
+    }
+}

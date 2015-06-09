@@ -126,6 +126,15 @@ module.exports = function(grunt) {
                     ],
                     'build/themes/light-top.css': [
                         'styles/light-top.less'
+                    ],
+                    'build/themes/minimal-bottom.css': [
+                        'styles/minimal-bottom.less'
+                    ],
+                    'build/themes/minimal-floating.css': [
+                        'styles/minimal-floating.less'
+                    ],
+                    'build/themes/minimal-top.css': [
+                        'styles/minimal-top.less'
                     ]
 
                 },
