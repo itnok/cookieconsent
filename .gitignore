@@ -1,0 +1,6 @@
+# Unignore everything
+!**/*
+
+# Then re-ignore things you want
+# ...your ignore rules here
+.DS_Store
