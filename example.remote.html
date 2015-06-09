@@ -17,10 +17,30 @@
 
 <script>
     window.cookieconsent_options = {
-        language: 'it',
+        message: {
+            en: "To offer you a better experience, this site uses cookies, including those of third parties. By selecting OK or continuing browsing you are consenting to the cookies usage.",
+            es: "Esta pagina web usa cookies propias y de terceros para mejorar tu experencia de navegación. Si haces OK, o continuando la navegación, aceptas el uso de las cookies.",
+            it: "Questo sito usa cookies proprietari e di terze parti per migliorare la tua esperienza di navigazione. Cliccando OK, o proseguendo la navigazione in altra maniera, acconsenti all'uso dei cookie."
+        },
+        dismiss: {
+            en: 'Got it!',
+            es: 'Esta bien!',
+            it: 'OK'
+        },
+        learnMore: {
+            en: 'More info',
+            es: 'Más información',
+            it: 'Maggiori informazioni'
+        },
+        link: {
+            en: 'http://www.domain.com/cookie-policy-en.html',
+            es: null,
+            it: 'http://www.domain.com/cookie-policy-en.html'
+        },
+        container: null, // selector
         theme: 'minimal-top',
         expose: true,
-        link: { it: 'http://www.bepartners.it/' }
+        language: 'en',
     }
 </script>
 <script type="text/javascript" src="//cookieconsent.bepartners.it/cookieconsent.min.js"></script>
